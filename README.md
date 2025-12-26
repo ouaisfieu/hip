@@ -114,7 +114,12 @@ Il est 16h10, tout va bien... trop bien même.
 
 ---
 
+## Encore
 
+19:27, tout va bien
+
++ une dose
++ un bonbon
 [1]: https://en.wikipedia.org/wiki/Muscimol "Muscimol"
 [2]: https://www.acslab.com/mushrooms/amanita-muscaria-vs-psychedelic-mushrooms "Amanita Muscaria vs. Psychedelic Mushrooms (Psilocybin)"
 [3]: https://lelabshop.fr/fr/blog/muscimol-et-muscarine-est-ce-different--n258 "Quelle est la différence entre le muscimole et la muscarine ?"
