@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALTEREGO - Crée ta personnalité alternative et change le monde</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+
+        :root {
+            --hot-pink: #ff3366;
+            --electric-blue: #00d4ff;
+            --neon-green: #39ff14;
+            --sunshine: #ffdd00;
+            --deep-purple: #9d4edd;
+            --dark: #0f0f0f;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Background animé */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--hot-pink), var(--electric-blue), var(--deep-purple));
+            background-size: 400% 400%;
+            animation: gradient 20s ease infinite;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero méga simple */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--hot-pink), var(--electric-blue), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero .tagline {
+            font-size: 2rem;
+            color: var(--sunshine);
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .hero .explain {
+            font-size: 1.4rem;
+            color: #ddd;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        /* CTA principal */
+        .hero-cta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-huge {
+            background: linear-gradient(135deg, var(--hot-pink), var(--deep-purple));
+            color: white;
+            border: none;
+            padding: 2rem 4rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+            border-radius: 100px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 15px 50px rgba(255, 51, 102, 0.5);
+            transition: all 0.3s;
+            border: 4px solid white;
+        }
+
+        .btn-huge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 25px 80px rgba(255, 51, 102, 0.8);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--electric-blue);
+            border: 4px solid var(--electric-blue);
+            padding: 2rem 4rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+            border-radius: 100px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--electric-blue);
+            color: var(--dark);
+            transform: scale(1.05);
+        }
+
+        /* C'est quoi ? */
+        .intro {
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.1), rgba(157, 78, 237, 0.1));
+            border-radius: 30px;
+            padding: 4rem;
+            margin: 5rem 0;
+            border: 3px solid var(--hot-pink);
+        }
+
+        .intro h2 {
+            font-size: 3rem;
+            color: var(--neon-green);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            color: #eee;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro-text strong {
+            color: var(--sunshine);
+            font-weight: 900;
+        }
+
+        /* Exemples concrets */
+        .examples {
+            margin: 5rem 0;
+        }
+
+        .examples h2 {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--electric-blue);
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .example-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 3px solid;
+            border-radius: 25px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .example-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--hot-pink), var(--electric-blue), var(--neon-green));
+        }
+
+        .example-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(255, 51, 102, 0.4);
+        }
+
+        .example-card.pink { border-color: var(--hot-pink); }
+        .example-card.blue { border-color: var(--electric-blue); }
+        .example-card.green { border-color: var(--neon-green); }
+        .example-card.yellow { border-color: var(--sunshine); }
+        .example-card.purple { border-color: var(--deep-purple); }
+
+        .example-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .example-card h3 {
+            font-size: 1.8rem;
+            color: var(--sunshine);
+            margin-bottom: 1rem;
+        }
+
+        .example-card p {
+            line-height: 1.7;
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        .example-persona {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(255,255,255,0.1);
+            font-style: italic;
+            color: #999;
+        }
+
+        /* Générateur interactif */
+        .generator {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(57, 255, 20, 0.1));
+            border-radius: 30px;
+            padding: 4rem;
+            margin: 5rem 0;
+            text-align: center;
+            border: 3px solid var(--neon-green);
+        }
+
+        .generator h2 {
+            font-size: 3rem;
+            color: var(--hot-pink);
+            margin-bottom: 2rem;
+        }
+
+        .generator p {
+            font-size: 1.3rem;
+            color: #ddd;
+            margin-bottom: 3rem;
+        }
+
+        .generator-box {
+            background: rgba(0, 0, 0, 0.8);
+            border: 3px solid var(--electric-blue);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .generator-result {
+            font-size: 2.5rem;
+            color: var(--sunshine);
+            font-weight: 900;
+            margin: 2rem 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .generator-desc {
+            font-size: 1.2rem;
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .btn-generate {
+            background: var(--neon-green);
+            color: var(--dark);
+            border: none;
+            padding: 1.5rem 3rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-generate:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(57, 255, 20, 0.6);
+        }
+
+        /* Prix simple */
+        .pricing-simple {
+            text-align: center;
+            margin: 6rem 0;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.2), rgba(157, 78, 237, 0.2));
+            border-radius: 30px;
+        }
+
+        .pricing-simple h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: var(--sunshine);
+        }
+
+        .price-mega {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--neon-green);
+            margin: 2rem 0;
+            text-shadow: 0 0 40px var(--neon-green);
+        }
+
+        .price-details {
+            font-size: 1.8rem;
+            color: #ddd;
+            margin-bottom: 3rem;
+        }
+
+        .what-you-get {
+            max-width: 600px;
+            margin: 3rem auto;
+            text-align: left;
+        }
+
+        .what-you-get li {
+            font-size: 1.3rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: #eee;
+        }
+
+        .what-you-get li:before {
+            content: "✓ ";
+            color: var(--neon-green);
+            font-weight: 900;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Témoignages */
+        .testimonials {
+            margin: 5rem 0;
+        }
+
+        .testimonials h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--deep-purple);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: rgba(0, 0, 0, 0.7);
+            border-left: 5px solid var(--hot-pink);
+            border-radius: 15px;
+            padding: 2.5rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ddd;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--sunshine);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-profile {
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        /* FAQ */
+        .faq {
+            margin: 6rem 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--electric-blue);
+        }
+
+        .faq-item {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--hot-pink);
+            background: rgba(255, 51, 102, 0.1);
+        }
+
+        .faq-question {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--sunshine);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* Footer CTA final */
+        .final-cta {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--deep-purple), var(--hot-pink));
+            border-radius: 30px;
+            margin: 5rem 0;
+        }
+
+        .final-cta h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .final-cta p {
+            font-size: 1.6rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero .tagline { font-size: 1.4rem; }
+            .btn-huge, .btn-secondary { 
+                padding: 1.5rem 2rem; 
+                font-size: 1.2rem; 
+            }
+            .price-mega { font-size: 5rem; }
+            .examples-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    
+    <div class="container">
+        <!-- Hero ultra accessible -->
+        <div class="hero">
+            <h1>ALTEREGO</h1>
+            <div class="tagline">Crée ta personnalité alternative et change le monde</div>
+            <div class="explain">
+                Tu veux faire bouger les choses mais tu sais pas par où commencer ?<br>
+                <strong>Crée un personnage, incarne-le, agis avec lui.</strong><br>
+                C'est comme un jeu de rôle, mais dans la vraie vie.
+            </div>
+            <div class="hero-cta">
+                <button class="btn-huge" onclick="scrollToSection('pricing')">CRÉER MON ALTEREGO</button>
+                <button class="btn-secondary" onclick="scrollToSection('examples')">VOIR DES EXEMPLES</button>
+            </div>
+        </div>
+
+        <!-- Explication simple -->
+        <div class="intro">
+            <h2>C'est quoi exactement ?</h2>
+            <div class="intro-text">
+                <strong>ALTEREGO</strong>, c'est une plateforme pour créer des <strong>personnalités alternatives</strong> 
+                et les faire vivre dans le monde réel.<br><br>
+                
+                Tu peux être <strong>"Le Collectif des Voisins Solidaires"</strong> et organiser des apéros de quartier.<br>
+                Ou <strong>"Captain Déchet"</strong> qui fait des actions anti-gaspi dans ta ville.<br>
+                Ou <strong>"Radio Pirate FM"</strong> qui fait des podcasts engagés.<br><br>
+                
+                <strong>Ton alterego, c'est toi, mais en plus libre.</strong> Tu choisis ton nom, ta mission, ton style.
+                On te donne les outils (site web, visuels, stickers...) et toi tu fais vivre ton personnage
+                dans la vraie vie : actions, événements, projets, contenus.<br><br>
+                
+                <strong>C'est sérieux mais fun. C'est militant mais cool. C'est toi, mais en mode super-héros du quotidien.</strong>
+            </div>
+        </div>
+
+        <!-- Exemples concrets et variés -->
+        <div class="examples" id="examples">
+            <h2>Des exemples pour tout le monde</h2>
+            <div class="examples-grid">
+                <div class="example-card pink">
+                    <div class="example-icon">🌱</div>
+                    <h3>Les Jardiniers Clandestins</h3>
+                    <p>Un groupe d'amis qui transforme des espaces abandonnés en mini-jardins sauvages. Ils plantent, arrosent, documentent tout sur leur site. La ville commence à les remarquer.</p>
+                    <div class="example-persona">Créé par : Sarah, 28 ans, graphiste</div>
+                </div>
+
+                <div class="example-card blue">
+                    <div class="example-icon">🎙️</div>
+                    <h3>Radio Banlieue FM</h3>
+                    <p>Un podcast pirate qui donne la parole aux habitants d'une cité. Interviews, débats, musique. 2000 écoutes par épisode. Zéro budget, 100% authenticité.</p>
+                    <div class="example-persona">Créé par : Karim, 19 ans, lycéen</div>
+                </div>
+
+                <div class="example-card green">
+                    <div class="example-icon">🍕</div>
+                    <h3>Le Resto Invisible</h3>
+                    <p>Une grand-mère qui cuisine pour les étudiants fauchés de son quartier. Elle a créé son alterego, posté des visuels, maintenant elle nourrit 15 personnes par semaine. Gratuitement.</p>
+                    <div class="example-persona">Créé par : Monique, 67 ans, retraitée</div>
+                </div>
+
+                <div class="example-card yellow">
+                    <div class="example-icon">💪</div>
+                    <h3>Collectif Anti-Bullshit</h3>
+                    <p>Trois collègues qui décryptent les arnaques marketing et les fausses promos. Leur site fait un carton, les marques commencent à avoir peur. Mission accomplie.</p>
+                    <div class="example-persona">Créé par : Tom, Lisa & Marc, 30-35 ans, salariés</div>
+                </div>
+
+                <div class="example-card purple">
+                    <div class="example-icon">🎨</div>
+                    <h3>Les Muralistes du Dimanche</h3>
+                    <p>Une bande de potes qui repeint les murs dégueu du quartier avec l'accord des proprios. Photos avant/après sur leur site. Le maire leur a proposé un budget.</p>
+                    <div class="example-persona">Créé par : Emma, 24 ans, étudiante en art</div>
+                </div>
+
+                <div class="example-card pink">
+                    <div class="example-icon">📚</div>
+                    <h3>Bibliothèque de Rue</h3>
+                    <p>Un collectif qui installe des étagères de livres gratuits dans les quartiers populaires. Chaque étagère a son site avec les livres dispo en temps réel. 50 étagères installées.</p>
+                    <div class="example-persona">Créé par : Fatima & Ahmed, couple de libraires</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Générateur interactif -->
+        <div class="generator">
+            <h2>🎲 Générateur d'idées</h2>
+            <p>Pas d'inspiration ? On te génère une idée d'alterego random !</p>
+            <div class="generator-box">
+                <div class="generator-result" id="alterego-name">???</div>
+                <div class="generator-desc" id="alterego-desc">Clique sur le bouton pour découvrir une idée</div>
+                <button class="btn-generate" onclick="generateAlterego()">GÉNÉRER UNE IDÉE</button>
+            </div>
+        </div>
+
+        <!-- Prix hyper simple -->
+        <div class="pricing-simple" id="pricing">
+            <h2>C'est combien ?</h2>
+            <div class="price-mega">12,50€</div>
+            <div class="price-details">par alterego / par an</div>
+            <p style="font-size: 1.4rem; color: #ddd; margin-bottom: 2rem;">
+                Autant d'alteregos que tu veux. Chacun coûte 12,50€/an. C'est tout.
+            </p>
+            <ul class="what-you-get">
+                <li>Ton site web personnalisé (hébergé gratuitement)</li>
+                <li>Kit visuel complet (logo, couleurs, templates)</li>
+                <li>Stickers et goodies physiques</li>
+                <li>Accès à tous les outils (gratuits)</li>
+                <li>Support communautaire 24/7</li>
+                <li>Apparition sur la carte du réseau</li>
+            </ul>
+            <button class="btn-huge" onclick="alert('🚀 Let\'s go !\\n\\nEnvoie un mail à : hello@alterego.city\\n\\nAvec :\\n- Ton prénom\\n- L\'idée d\'alterego (même vague)\\n- Ton niveau de motivation (de 1 à 🔥)\\n\\nOn te répond en 24h max !')">JE CRÉE MON ALTEREGO</button>
+        </div>
+
+        <!-- Témoignages crédibles -->
+        <div class="testimonials">
+            <h2>Ils l'ont fait</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "J'étais juste une prof qui voulait faire un truc pour mes élèves. 
+                        J'ai créé 'Prof en Lutte' et maintenant je fais des threads viraux sur l'éducation. 
+                        15k followers. J'ai changé de vie."
+                    </div>
+                    <div class="testimonial-author">Julie M.</div>
+                    <div class="testimonial-profile">Enseignante, Bruxelles</div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Mon alterego 'Le Voisin Bricoleur' répare les vélos gratuitement dans mon quartier. 
+                        C'est devenu un truc énorme, on est maintenant 12 bénévoles. Tout a commencé avec ce site."
+                    </div>
+                    <div class="testimonial-author">David L.</div>
+                    <div class="testimonial-profile">Mécanicien, Liège</div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "J'avais 17 ans, aucune idée de ce que je voulais faire. 
+                        'Radio Lycée' m'a permis de trouver ma voix. Littéralement. 
+                        Aujourd'hui je fais des études de journalisme."
+                    </div>
+                    <div class="testimonial-author">Léa D.</div>
+                    <div class="testimonial-profile">Étudiante, Namur</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ claire -->
+        <div class="faq">
+            <h2>Questions fréquentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    C'est pour qui exactement ?
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Pour TOUT LE MONDE. Si tu veux faire un truc qui a du sens, créer un projet, mobiliser des gens, 
+                    partager tes idées... t'es au bon endroit. Peu importe ton âge, ton taf, ton quartier.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Je dois savoir coder ?
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    ZÉRO. On te donne un site tout fait, tu changes juste les textes et les images. 
+                    Si tu sais utiliser Word, tu sais utiliser ALTEREGO.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    C'est légal ?
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Oui, 100%. Un alterego c'est juste un pseudonyme créatif. Comme un nom d'artiste ou de groupe. 
+                    Tant que tu respectes les lois (et le bon sens), t'es tranquille.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Je peux le faire seul·e ou en groupe ?
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Les deux ! Tu peux créer un alterego solo ou avec tes potes, ta famille, tes collègues. 
+                    Certains alteregos sont gérés par une personne, d'autres par 20. À toi de voir.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Si je veux arrêter ?
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    Pas de problème. Aucun engagement. Tu paies 12,50€ pour un an, après tu renouvelles ou pas. 
+                    Pas d'abonnement piège, pas de frais cachés. On est clean.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Vous faites quoi avec mon argent ?
+                    <span>▼</span>
+                </div>
+                <div class="faq-answer">
+                    On paie l'hébergement, les outils, les goodies, et on finance le développement de nouvelles fonctionnalités. 
+                    Zéro profit, 100% réinvesti dans le projet. C'est une initiative citoyenne, pas une startup.
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA final puissant -->
+        <div class="final-cta">
+            <h2>Prêt·e à devenir quelqu'un d'autre ?</h2>
+            <p>
+                Des milliers de personnes ont déjà créé leur alterego et changent leur quartier, 
+                leur ville, leur vie. À ton tour maintenant.
+            </p>
+            <button class="btn-huge" onclick="alert('💥 GO !\\n\\nÉcris-nous à : hello@alterego.city\\n\\nDis-nous :\\n- Qui tu es\\n- Ce que tu veux changer\\n- Ton idée d\'alterego (même floue)\\n\\nOn te guide pour le reste. Promis, c\'est simple.')">
+                JE ME LANCE
+            </button>
+            <p style="margin-top: 2rem; font-size: 1.1rem; opacity: 0.9;">
+                Questions ? hello@alterego.city • Tout est open source
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const alteregos = [
+            { name: "Les Cuisiniers du Dimanche", desc: "Tu cuisines des gros plats et tu distribues à ceux qui en ont besoin" },
+            { name: "Captain Propreté", desc: "Tu organises des clean-up de ton quartier avec tes voisins" },
+            { name: "Bibliothèque Vivante", desc: "Tu prêtes des livres depuis ton salon, comme une bibliothèque de quartier" },
+            { name: "Radio Parking", desc: "Tu fais des podcasts enregistrés depuis ta voiture" },
+            { name: "Le Prof Rebelle", desc: "Tu donnes des cours gratuits de soutien scolaire" },
+            { name: "Les Réparateurs Fous", desc: "Tu répares gratuitement les objets cassés des gens" },
+            { name: "Guerilla Jardinage", desc: "Tu plantes des fleurs et légumes dans les espaces abandonnés" },
+            { name: "Le Veilleur de Nuit", desc: "Tu aides les SDF de ton quartier (couvertures, café, discussion)" },
+            { name: "Collectif Anti-Gaspi", desc: "Tu récupères la bouffe des supermarchés et tu la redistribues" },
+            { name: "Le Traducteur Public", desc: "Tu aides gratuitement les gens avec les papiers administratifs" },
+            { name: "Les Peintres Sauvages", desc: "Tu embellis les murs moches de ta ville avec des fresques" },
+            { name: "Radio Balcon", desc: "Tu fais des émissions depuis ton balcon pour tes voisins" },
+            { name: "Le Coach Gratuit", desc: "Tu donnes des conseils sport/nutrition à qui veut, gratuitement" },
+            { name: "Collectif Vélo Libre", desc: "Tu répares et donnes des vélos aux gens qui en ont besoin" },
+            { name: "Les Conteurs du Soir", desc: "Tu racontes des histoires aux enfants du quartier chaque semaine" }
+        ];
+
+        function generateAlterego() {
+            const random = alteregos[Math.floor(Math.random() * alteregos.length)];
+            document.getElementById('alterego-name').textContent = random.name;
+            document.getElementById('alterego-desc').textContent = random.desc;
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Animate cards on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.example-card, .testimonial, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
