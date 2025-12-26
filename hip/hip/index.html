@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉDUCOPOLY - Le JDR Grandeur Nature de l'Éducation Permanente</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap');
+
+        :root {
+            --neon-pink: #ff006e;
+            --neon-blue: #00d9ff;
+            --neon-green: #00ff9f;
+            --neon-yellow: #ffea00;
+            --neon-purple: #b537f2;
+            --dark: #0a0a0a;
+            --darker: #050505;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--dark);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        .bg-animated {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff006e, #00d9ff, #00ff9f, #b537f2);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero EXPLOSIF */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 4rem;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            animation: glow 2s ease-in-out infinite;
+            text-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.5); }
+        }
+
+        .hero .tagline {
+            font-size: 2rem;
+            color: var(--neon-yellow);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--neon-blue);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        /* CTA MASSIVE */
+        .cta-mega {
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 0 60px rgba(255, 0, 110, 0.6);
+            animation: pulse 3s infinite;
+            border: 3px solid var(--neon-yellow);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .cta-mega h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+        }
+
+        .cta-mega .price {
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--neon-yellow);
+            margin: 2rem 0;
+            text-shadow: 0 0 30px var(--neon-yellow);
+        }
+
+        .cta-mega .price-details {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-massive {
+            background: var(--neon-green);
+            color: var(--dark);
+            border: none;
+            padding: 2rem 4rem;
+            font-size: 2rem;
+            font-weight: 900;
+            border-radius: 100px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 40px rgba(0, 255, 159, 0.5);
+            transition: all 0.3s;
+            border: 5px solid var(--dark);
+        }
+
+        .btn-massive:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 20px 80px rgba(0, 255, 159, 0.8);
+        }
+
+        /* Concept expliqué */
+        .concept {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(181, 55, 242, 0.1));
+            border: 3px solid var(--neon-blue);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .concept h2 {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            margin-bottom: 2rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.8rem;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .concept-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid var(--neon-pink);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 0, 110, 0.5);
+            border-color: var(--neon-yellow);
+        }
+
+        .concept-card h3 {
+            font-size: 1.8rem;
+            color: var(--neon-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .concept-card p {
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        /* Boutique d'outils */
+        .shop {
+            margin: 4rem 0;
+        }
+
+        .shop h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--neon-pink);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(181, 55, 242, 0.2));
+            border: 3px solid var(--neon-green);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: "GRATUIT";
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--neon-green);
+            color: var(--dark);
+            padding: 0.5rem 3rem;
+            transform: rotate(45deg);
+            font-weight: 900;
+            font-size: 0.9rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.5rem;
+            color: var(--neon-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .btn-download {
+            background: var(--neon-blue);
+            color: var(--dark);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-download:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.6);
+        }
+
+        /* Offres premium délirantes */
+        .pricing {
+            margin: 5rem 0;
+        }
+
+        .pricing h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--neon-purple);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9));
+            border: 3px solid;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .price-card.basic {
+            border-color: var(--neon-blue);
+        }
+
+        .price-card.pro {
+            border-color: var(--neon-pink);
+            transform: scale(1.05);
+        }
+
+        .price-card.legendary {
+            border-color: var(--neon-yellow);
+        }
+
+        .price-card:hover {
+            transform: scale(1.1);
+        }
+
+        .price-card .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--neon-pink);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.85rem;
+        }
+
+        .price-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--neon-green);
+        }
+
+        .price-card .price-tag {
+            font-size: 4rem;
+            font-weight: 900;
+            margin: 1.5rem 0;
+        }
+
+        .price-card.basic .price-tag { color: var(--neon-blue); }
+        .price-card.pro .price-tag { color: var(--neon-pink); }
+        .price-card.legendary .price-tag { color: var(--neon-yellow); }
+
+        .price-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 2rem 0;
+        }
+
+        .price-card li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: #ddd;
+        }
+
+        .price-card li:before {
+            content: "✓ ";
+            color: var(--neon-green);
+            font-weight: 900;
+            margin-right: 0.5rem;
+        }
+
+        /* Goodies */
+        .goodies {
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .goodies h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--neon-green);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+        }
+
+        .goodies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .goodie-card {
+            background: rgba(255, 0, 110, 0.2);
+            border: 2px solid var(--neon-pink);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .goodie-card:hover {
+            transform: rotate(-5deg) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 0, 110, 0.6);
+        }
+
+        .goodie-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .goodie-card h3 {
+            color: var(--neon-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .goodie-card p {
+            color: #ccc;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 5rem 0;
+        }
+
+        .footer-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .tagline { font-size: 1.3rem; }
+            .cta-mega .price { font-size: 3rem; }
+            .btn-massive { padding: 1.5rem 2rem; font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animated"></div>
+    
+    <div class="container">
+        <!-- Hero explosif -->
+        <div class="hero">
+            <h1>ÉDUCOPOLY</h1>
+            <div class="tagline">Le JDR Grandeur Nature de l'Éducation Permanente</div>
+            <div class="subtitle">
+                Créez vos entités fictives • Incarnez vos personnages • Jouez le changement social<br>
+                Un jeu sérieux pour toutes les assos d'éduc pop de FWB
+            </div>
+        </div>
+
+        <!-- CTA MEGA -->
+        <div class="cta-mega">
+            <h2>Rejoignez la partie</h2>
+            <div class="price">12,50€</div>
+            <div class="price-details">par entité / par an<br>Créez autant d'entités que vous voulez !</div>
+            <button class="btn-massive" onclick="alert('🎮 Inscription ouverte ! Envoyez un mail à contact@educopoly.be avec le nom de votre asso')">CRÉER MON ENTITÉ</button>
+            <div style="margin-top: 2rem; font-size: 1.2rem;">
+                ✨ Hébergement GitHub Pages offert • Tous les outils gratuits • Support communautaire
+            </div>
+        </div>
+
+        <!-- Le concept -->
+        <div class="concept">
+            <h2>C'est quoi le délire ?</h2>
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3>🎭 Créez vos entités</h3>
+                    <p>Votre asso crée des personnages/entités fictives : des collectifs imaginaires, des organisations parallèles, des alter-egos militants. Chaque entité a sa propre identité, mission, style.</p>
+                </div>
+                <div class="concept-card">
+                    <h3>🌍 Jouez grandeur nature</h3>
+                    <p>Utilisez vos entités pour mener de vraies actions : publications, ateliers, campagnes, événements. Le jeu devient réalité, la réalité devient jeu. C'est de l'éducation permanente en mode immersif.</p>
+                </div>
+                <div class="concept-card">
+                    <h3>🤝 Collaborez dans l'univers</h3>
+                    <p>Vos entités interagissent avec celles des autres assos. Alliances, débats, projets communs. Un univers partagé où tout le secteur joue ensemble.</p>
+                </div>
+                <div class="concept-card">
+                    <h3>🛠️ Toolbox complète</h3>
+                    <p>Site web clé en main (HTML/CSS/JS pur), outils de com, templates, ressources pédago. Tout est prêt, vous n'avez qu'à personnaliser et jouer.</p>
+                </div>
+                <div class="concept-card">
+                    <h3>💸 Modèle économique game</h3>
+                    <p>12,50€/an/entité. Pas de bullshit corporate, pas d'abonnement piège. Hébergement offert sur GitHub Pages. Tous les outils sont gratuits et open source.</p>
+                </div>
+                <div class="concept-card">
+                    <h3>🎁 Goodies & surprises</h3>
+                    <p>Stickers, badges, posters, merch personnalisé pour vos entités. Parce que jouer, c'est aussi s'éclater.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Boutique d'outils gratuits -->
+        <div class="shop">
+            <h2>🛍️ Boutique d'outils (100% GRATUIT)</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>🌐 Template de site</h3>
+                    <p>Un site web complet en HTML/CSS/JS pur, prêt à publier sur GitHub Pages. Design moderne, responsive, customisable.</p>
+                    <button class="btn-download" onclick="alert('📦 Téléchargez le template sur : github.com/educopoly/site-template')">Télécharger</button>
+                </div>
+                <div class="tool-card">
+                    <h3>🎨 Kit d'identité visuelle</h3>
+                    <p>Logos, couleurs, typos, templates de visuels pour vos entités. Format Figma + SVG + PNG.</p>
+                    <button class="btn-download" onclick="alert('🎨 Téléchargez le kit sur : github.com/educopoly/visual-kit')">Télécharger</button>
+                </div>
+                <div class="tool-card">
+                    <h3>📢 Templates com</h3>
+                    <p>Posts réseaux sociaux, affiches, flyers, newsletters. Tout en Canva et formats libres.</p>
+                    <button class="btn-download" onclick="alert('📢 Téléchargez les templates sur : github.com/educopoly/com-templates')">Télécharger</button>
+                </div>
+                <div class="tool-card">
+                    <h3>📚 Boîte à outils pédago</h3>
+                    <p>Méthodes d'animation, fiches pratiques, formats d'ateliers. Co-créé par le secteur.</p>
+                    <button class="btn-download" onclick="alert('📚 Téléchargez la boîte sur : github.com/educopoly/pedago-tools')">Télécharger</button>
+                </div>
+                <div class="tool-card">
+                    <h3>🎮 Générateur d'entités</h3>
+                    <p>Un outil pour générer aléatoirement des idées d'entités, noms, missions, personnalités.</p>
+                    <button class="btn-download" onclick="alert('🎮 Utilisez le générateur sur : educopoly.be/generator')">Utiliser</button>
+                </div>
+                <div class="tool-card">
+                    <h3>🗺️ Carte du réseau</h3>
+                    <p>Visualisez toutes les entités du secteur, leurs connexions, leurs actions. Univers partagé en temps réel.</p>
+                    <button class="btn-download" onclick="alert('🗺️ Explorez la carte sur : educopoly.be/map')">Explorer</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Offres premium -->
+        <div class="pricing">
+            <h2>💎 Offres & Niveaux</h2>
+            <div class="pricing-grid">
+                <div class="price-card basic">
+                    <h3>STARTER</h3>
+                    <div class="price-tag">12,50€</div>
+                    <div style="color: #999; margin-bottom: 2rem;">par entité / an</div>
+                    <ul>
+                        <li>1 entité fictive</li>
+                        <li>Site web hébergé</li>
+                        <li>Tous les outils gratuits</li>
+                        <li>Support communautaire</li>
+                        <li>Participation au réseau</li>
+                    </ul>
+                    <button class="btn-download" onclick="alert('🚀 Inscrivez-vous sur : educopoly.be/signup')">Démarrer</button>
+                </div>
+
+                <div class="price-card pro">
+                    <div class="badge">POPULAIRE</div>
+                    <h3>COLLECTIF</h3>
+                    <div class="price-tag">50€</div>
+                    <div style="color: #999; margin-bottom: 2rem;">5 entités / an</div>
+                    <ul>
+                        <li>5 entités différentes</li>
+                        <li>5 sites hébergés</li>
+                        <li>Kit identité premium</li>
+                        <li>Support prioritaire</li>
+                        <li>Goodies physiques</li>
+                        <li>Apparition carte XL</li>
+                    </ul>
+                    <button class="btn-download" onclick="alert('🔥 Inscrivez-vous sur : educopoly.be/signup')">Let\'s go</button>
+                </div>
+
+                <div class="price-card legendary">
+                    <h3>LEGENDARY</h3>
+                    <div class="price-tag">150€</div>
+                    <div style="color: #999; margin-bottom: 2rem;">entités illimitées / an</div>
+                    <ul>
+                        <li>Entités illimitées</li>
+                        <li>Sites illimités</li>
+                        <li>Domaine perso offert</li>
+                        <li>Support VIP 24/7</li>
+                        <li>Merch custom complet</li>
+                        <li>Co-design d'événements</li>
+                        <li>Badge légende réseau</li>
+                    </ul>
+                    <button class="btn-download" onclick="alert('👑 Inscrivez-vous sur : educopoly.be/signup')">Mode légende</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Goodies -->
+        <div class="goodies">
+            <h2>🎁 Goodies & Merch</h2>
+            <div class="goodies-grid">
+                <div class="goodie-card">
+                    <div class="goodie-icon">🎭</div>
+                    <h3>Stickers d'entités</h3>
+                    <p>Pack de 20 stickers custom avec le logo de vos entités</p>
+                </div>
+                <div class="goodie-card">
+                    <div class="goodie-icon">👕</div>
+                    <h3>T-shirts collector</h3>
+                    <p>T-shirt ÉDUCOPOLY édition limitée avec votre entité</p>
+                </div>
+                <div class="goodie-card">
+                    <div class="goodie-icon">🎨</div>
+                    <h3>Posters XXL</h3>
+                    <p>Poster A1 de la carte complète du réseau + vos entités</p>
+                </div>
+                <div class="goodie-card">
+                    <div class="goodie-icon">🔖</div>
+                    <h3>Badges exclusifs</h3>
+                    <p>Badges physiques avec QR code vers vos entités</p>
+                </div>
+                <div class="goodie-card">
+                    <div class="goodie-icon">📓</div>
+                    <h3>Carnet de jeu</h3>
+                    <p>Carnet papier pour noter vos quêtes et missions IRL</p>
+                </div>
+                <div class="goodie-card">
+                    <div class="goodie-icon">🎮</div>
+                    <h3>Pack surprise</h3>
+                    <p>Mystery box trimestrielle avec des goodies inédits</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer CTA ultime -->
+        <div class="footer-cta">
+            <h2>Prêt·e à jouer ?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2rem;">
+                Rejoignez les assos d'éducation permanente qui transforment déjà le secteur en terrain de jeu militant
+            </p>
+            <button class="btn-massive" onclick="alert('🎮 Let\'s go ! Envoyez un mail à : contact@educopoly.be avec :\n- Nom de votre asso\n- Nombre d\'entités souhaitées\n- Vos idées d\'entités (optionnel)\n\nOn vous envoie tout le kit de démarrage dans les 24h !')">CRÉER MA PREMIÈRE ENTITÉ</button>
+            <p style="margin-top: 2rem; font-size: 1rem; opacity: 0.9;">
+                Questions ? contact@educopoly.be • Tout est open source sur GitHub
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Easter eggs et interactions
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'e' && e.ctrlKey) {
+                alert('🎮 Konami code activé ! Vous venez de débloquer le badge "Hacker Éducatif" 😎');
+            }
+        });
+
+        // Animate on scroll
+        const cards = document.querySelectorAll('.concept-card, .tool-card, .price-card, .goodie-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
