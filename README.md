@@ -112,7 +112,8 @@ Il est 16h10, tout va bien... trop bien même.
   + reste une
   + puis des bonbons
 
-Si tu veux, dis-moi **la quantité exacte et la forme que tu as prise** (sirop, fleur, mg estimés), et je te ferai un **profil plus précis effet/risque par dose**.
+---
+
 
 [1]: https://en.wikipedia.org/wiki/Muscimol "Muscimol"
 [2]: https://www.acslab.com/mushrooms/amanita-muscaria-vs-psychedelic-mushrooms "Amanita Muscaria vs. Psychedelic Mushrooms (Psilocybin)"
