@@ -105,6 +105,13 @@ Considère **assistance médicale urgente** si tu ressens :
 
 ---
 
+## Suite
+
+Il est 16h10, tout va bien... trop bien même.
++ + +2 doses
+  + reste une
+  + puis des bonbons
+
 Si tu veux, dis-moi **la quantité exacte et la forme que tu as prise** (sirop, fleur, mg estimés), et je te ferai un **profil plus précis effet/risque par dose**.
 
 [1]: https://en.wikipedia.org/wiki/Muscimol "Muscimol"
