@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Building Sectoriel - Éducation Permanente FWB</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #e74c3c;
+            --secondary: #3498db;
+            --accent: #f39c12;
+            --success: #27ae60;
+            --purple: #9b59b6;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.95) 0%, rgba(155, 89, 182, 0.95) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero .manifesto {
+            max-width: 800px;
+            margin: 2rem auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        .section li:last-child {
+            border-bottom: none;
+        }
+
+        .section li strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Questions profondes */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--purple) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .question-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            transform: rotate(45deg);
+        }
+
+        .question-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .question-card p {
+            color: rgba(255,255,255,0.95);
+            font-size: 1rem;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        /* Formulaire */
+        .form-box {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .form-box h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .form-box input,
+        .form-box textarea,
+        .form-box select {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-box input:focus,
+        .form-box textarea:focus,
+        .form-box select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+
+        .form-box textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Contributions */
+        .contributions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contribution-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .contribution-card .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .contribution-card .name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .contribution-card .type {
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .contribution-card .content {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .contribution-card .timestamp {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Défis */
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .challenge-card {
+            background: linear-gradient(135deg, var(--success) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge-card::after {
+            content: "🎯";
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+        }
+
+        .challenge-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .challenge-card .description {
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .challenge-card .note {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        /* Valeurs */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 12px;
+            border-top: 5px solid var(--primary);
+        }
+
+        .value-card h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .value-card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.95;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1rem; }
+            .section { padding: 2rem; }
+            .section h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🔥 Team Building Sectoriel</h1>
+        <div class="subtitle">Éducation Permanente · Fédération Wallonie-Bruxelles</div>
+        <div class="manifesto">
+            <strong>L'idée :</strong> Créer un véritable espace de rencontre et de collaboration entre associations d'éducation permanente. Pas un événement corporate, mais un outil horizontal où associations, équipes et publics peuvent se connaître, échanger, construire ensemble. Parce que l'éducation populaire se fait collectivement.
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Stats en temps réel -->
+        <div class="stats">
+            <div class="stat-card">
+                <span class="stat-number" id="participants-count">0</span>
+                <span class="stat-label">Participant·e·s</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="contributions-count">0</span>
+                <span class="stat-label">Contributions</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="associations-count">0</span>
+                <span class="stat-label">Associations</span>
+            </div>
+        </div>
+
+        <!-- Questions de réflexion -->
+        <div class="section">
+            <h2>💭 Questions pour se rencontrer autrement</h2>
+            <p>Des questions pour aller au-delà du "qu'est-ce que tu fais ?". Pour comprendre les pratiques, les valeurs, les luttes de chacun·e.</p>
+            
+            <div class="questions-grid">
+                <div class="question-card">
+                    <h3>🎯 Votre mission</h3>
+                    <p>En une phrase : quelle transformation sociale votre association cherche-t-elle à créer ?</p>
+                </div>
+                <div class="question-card">
+                    <h3>🔥 Vos pratiques</h3>
+                    <p>Quelle est la méthode pédagogique dont vous êtes le plus fier·ère et pourquoi ?</p>
+                </div>
+                <div class="question-card">
+                    <h3>⚡ Vos publics</h3>
+                    <p>Comment travaillez-vous vraiment l'horizontalité avec les personnes que vous accompagnez ?</p>
+                </div>
+                <div class="question-card">
+                    <h3>🤝 Vos collaborations</h3>
+                    <p>Avec quelle autre structure avez-vous déjà collaboré et qu'est-ce que ça a donné ?</p>
+                </div>
+                <div class="question-card">
+                    <h3>💡 Vos besoins</h3>
+                    <p>Qu'est-ce qui vous manque concrètement pour mieux faire votre travail d'éducation permanente ?</p>
+                </div>
+                <div class="question-card">
+                    <h3>🌍 Vos rêves</h3>
+                    <p>Si vous pouviez lancer un projet intersectoriel avec d'autres assos, ce serait quoi ?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Espace de contribution -->
+        <div class="section">
+            <h2>💬 Espace de partage</h2>
+            <p>Partagez vos réflexions, vos expériences, vos propositions. Tout le monde peut contribuer : associations, travailleur·euses, publics.</p>
+            
+            <div class="form-box">
+                <h3>✍️ Ajouter une contribution</h3>
+                <input type="text" id="name" placeholder="Votre prénom + votre association (ex: Sarah - Mon Asso)">
+                <select id="type">
+                    <option value="">Type de contribution</option>
+                    <option value="Présentation">👋 Présentation de mon asso/équipe</option>
+                    <option value="Témoignage">💭 Témoignage / expérience</option>
+                    <option value="Proposition">💡 Proposition de collaboration</option>
+                    <option value="Ressource">📚 Ressource utile à partager</option>
+                    <option value="Question">❓ Question au secteur</option>
+                    <option value="Réflexion">🔥 Réflexion critique</option>
+                </select>
+                <textarea id="content" placeholder="Votre message (soyez authentiques, on est entre nous)"></textarea>
+                <button class="btn" onclick="addContribution()">Publier ma contribution</button>
+            </div>
+
+            <div id="contributions-area">
+                <div class="empty-state">
+                    Les contributions apparaîtront ici. Soyez les premier·ères à lancer la discussion !
+                </div>
+            </div>
+        </div>
+
+        <!-- Pistes de collaboration -->
+        <div class="section">
+            <h2>🎯 Pistes de projets collectifs</h2>
+            <p>Voici quelques idées de projets intersectoriels qu'on pourrait construire ensemble. D'autres idées ? Partagez-les dans l'espace de contribution !</p>
+            
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <h3>📖 Boîte à outils commune</h3>
+                    <div class="description">
+                        Co-créer une boîte à outils d'éducation permanente : méthodes d'animation, supports pédagogiques, retours d'expériences. Format libre et ouvert.
+                    </div>
+                    <div class="note">
+                        💡 Intéressé·e ? Manifestez-vous dans l'espace de contribution
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <h3>🔗 Réseau de mutualisation</h3>
+                    <div class="description">
+                        Créer un système d'échange de compétences entre assos : formations croisées, prêt de matériel, partage de salles, co-animation d'ateliers.
+                    </div>
+                    <div class="note">
+                        💡 Intéressé·e ? Manifestez-vous dans l'espace de contribution
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <h3>🎪 Action commune de terrain</h3>
+                    <div class="description">
+                        Organiser un événement intersectoriel dans l'espace public : festival, université populaire, action militante... À définir collectivement.
+                    </div>
+                    <div class="note">
+                        💡 Intéressé·e ? Manifestez-vous dans l'espace de contribution
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ce qui nous unit -->
+        <div class="section">
+            <h2>⚡ Les fondations communes</h2>
+            <p>Au-delà de nos spécificités, qu'est-ce qui fait l'ADN de l'éducation permanente ?</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <h4>🔥 Émancipation</h4>
+                    <p>Développer l'autonomie et la conscience critique. Pas de l'assistanat, mais du pouvoir d'agir.</p>
+                </div>
+                <div class="value-card">
+                    <h4>🤝 Horizontalité</h4>
+                    <p>Apprendre ensemble, sans hiérarchie du savoir. Les publics sont des partenaires.</p>
+                </div>
+                <div class="value-card">
+                    <h4>⚖️ Justice sociale</h4>
+                    <p>Combattre les inégalités systémiques. Nos pratiques sont politiques.</p>
+                </div>
+                <div class="value-card">
+                    <h4>🌍 Transformation</h4>
+                    <p>Comprendre le monde pour le changer. Action, mobilisation, lutte collective.</p>
+                </div>
+                <div class="value-card">
+                    <h4>🎨 Créativité</h4>
+                    <p>Des méthodes vivantes, inventives, parfois subversives. L'éducation populaire est un art.</p>
+                </div>
+                <div class="value-card">
+                    <h4>💪 Solidarité</h4>
+                    <p>Le collectif avant tout. Entre assos, avec les publics, dans les quartiers.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mode d'emploi -->
+        <div class="section">
+            <h2>📋 Comment utiliser cet espace</h2>
+            <ul>
+                <li><strong>Pour les associations :</strong> Présentez votre structure, vos pratiques, vos besoins dans l'espace de contribution</li>
+                <li><strong>Pour les équipes :</strong> Partagez vos expériences terrain, vos questionnements, vos envies de collaboration</li>
+                <li><strong>Pour les publics :</strong> Si votre asso vous implique, n'hésitez pas à témoigner de votre vécu et de vos attentes</li>
+                <li><strong>Pour tou·tes :</strong> Réagissez aux contributions des autres, proposez des collaborations, lancez des débats</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let participants = new Set();
+        let associations = new Set();
+        let contributions = [];
+
+        function updateStats() {
+            document.getElementById('participants-count').textContent = participants.size;
+            document.getElementById('associations-count').textContent = associations.size;
+            document.getElementById('contributions-count').textContent = contributions.length;
+        }
+
+        function addContribution() {
+            const name = document.getElementById('name').value.trim();
+            const type = document.getElementById('type').value;
+            const content = document.getElementById('content').value.trim();
+
+            if (!name || !type || !content) {
+                alert('Merci de remplir tous les champs avant de publier 😊');
+                return;
+            }
+
+            const typeEmojis = {
+                'Présentation': '👋',
+                'Témoignage': '💭',
+                'Proposition': '💡',
+                'Ressource': '📚',
+                'Question': '❓',
+                'Réflexion': '🔥'
+            };
+
+            const now = new Date();
+            const timestamp = now.toLocaleDateString('fr-FR', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            const contribution = {
+                name: name,
+                type: type,
+                content: content,
+                timestamp: timestamp
+            };
+
+            contributions.unshift(contribution);
+
+            // Extract association if format is "Name - Asso"
+            if (name.includes('-')) {
+                const asso = name.split('-')[1].trim();
+                if (asso) associations.add(asso);
+            }
+            participants.add(name);
+
+            renderContributions();
+            updateStats();
+
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('type').value = '';
+            document.getElementById('content').value = '';
+
+            // Scroll to contributions
+            document.getElementById('contributions-area').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function renderContributions() {
+            const area = document.getElementById('contributions-area');
+            
+            if (contributions.length === 0) {
+                area.innerHTML = '<div class="empty-state">Les contributions apparaîtront ici. Soyez les premier·ères à lancer la discussion !</div>';
+                return;
+            }
+
+            const typeEmojis = {
+                'Présentation': '👋',
+                'Témoignage': '💭',
+                'Proposition': '💡',
+                'Ressource': '📚',
+                'Question': '❓',
+                'Réflexion': '🔥'
+            };
+
+            area.innerHTML = '<div class="contributions-grid">' + 
+                contributions.map(c => `
+                    <div class="contribution-card">
+                        <div class="header">
+                            <span class="name">${c.name}</span>
+                            <span class="type">${typeEmojis[c.type]} ${c.type}</span>
+                        </div>
+                        <div class="content">${c.content}</div>
+                        <div class="timestamp">${c.timestamp}</div>
+                    </div>
+                `).join('') +
+            '</div>';
+        }
+
+        // Initialize
+        updateStats();
+    </script>
+</body>
+</html>
